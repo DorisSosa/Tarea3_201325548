@@ -12,10 +12,11 @@ import java.util.Scanner;
  */
 public class Promedio {
     
+    Scanner leer= new Scanner(System.in);
+    int notas[][]=new int[6][6];
+    
     public void menuPromedio(){
         
-        Scanner leer;
-        leer = new Scanner(System.in);
         int opcion;
         
         do{
@@ -33,21 +34,46 @@ public class Promedio {
                     mostrarPromedio();
                     break;
                 case 3:
-                     
+                    System.out.println("Has regresado al menu principal"); 
                     break;
                 default:
                     System.out.println("Opcion Invalida");
                     break;
                     
             }
-        }while(opcion!=4);
+        }while(opcion!=3);
     }
     
     private void ingresarNotas(){
-        System.out.println("Estamos trabajando en ello");
+        for (int fila=0; fila<6; fila++){     //recorre la matriz fila por fila
+            System.out.println("Ingrese notas de alumno " + (fila+1));     
+            notas[fila][0]= (fila+1);     //escribe un correlativo en la primera columna
+            for (int columna=1; columna<5;columna++){     //recorre la matriz columna por columna
+                System.out.println("unidad " + columna);    
+                notas[fila][columna]=leer.nextInt();    //asigna el entero escrito por el usuario en la fila y columna indicada
+            }
+        }
     }
     
     private void mostrarPromedio(){
-        System.out.println("Estamos trabajando en ello");
+        
+        int suma=0;
+        int promedio;
+        for (int fila=0;fila<6;fila++){     //recorre la matriz fila por fila
+             
+            for(int columna=1;columna<5; columna++){      //recorre la matriz columna por columna 
+                suma= suma + notas[fila][columna];      //suma los datos de cada fila
+            }  
+            promedio=suma/4;     //promedia los datos
+            notas[fila][5]=promedio;    //escribe el promedio en la ultima columna
+            suma=0;     //asigna a la variable suma el valor 0 para volver a usarla en la sig fila
+        }
+        
+        for (int fila=0;fila<6;fila++){ 
+            for(int columna=0;columna<6; columna++){         
+                System.out.print("\t" + notas[fila][columna] + " ");        //muestra la matriz 
+            }
+            System.out.println("");   //inserta un salto de linea
+        }
     }
 }

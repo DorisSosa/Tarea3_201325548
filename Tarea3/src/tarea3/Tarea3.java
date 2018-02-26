@@ -20,14 +20,12 @@ public class Tarea3 {
         try{                         //capturar las escepciones
         Tarea3.menu();  //llamar el metodo menu
         }catch(Exception e){
-            System.out.println(e);  
+            System.out.println(e);     //muestra el error capturado
         }
     }
     
     public static void menu(){
-        Scanner leer;   //variable tipo Scanner
-        
-        leer = new Scanner(System.in);  //crear la variable(objeto) tipo scanner
+        Scanner leer = new Scanner(System.in);  //crear el lector
         int opcion;           
         do{            //realiza la accion al menos una vez
             System.out.println("[IPC1]Tarea3_201325548");

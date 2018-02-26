@@ -12,10 +12,11 @@ import java.util.Scanner;
  */
 public class Digitos {
     
+    Scanner leer = new Scanner(System.in);
+    int n=0;
+    
     public void menuDigitos(){
         
-        Scanner leer;
-        leer = new Scanner(System.in);
         int opcion;
         
         do{
@@ -40,14 +41,29 @@ public class Digitos {
                     break;
                     
             }
-        }while(opcion!=4); 
+        }while(opcion!=3); 
     }
     
     private void ingresarDigitos(){
-        System.out.println("Estamos trabajando en ello");
+        
+        System.out.println("Ingrese un numero mayor a 0");
+        n=leer.nextInt();
+        if ((n<=0)||(n>100000)){
+            System.out.println("Numero invalido. Ingrese un numero");
+            n=leer.nextInt();
+        }
     }
-    
-    private void mostrarDigitos(){
-        System.out.println("Estamos trabajando en ello");
+    private void mostrarDigitos(){   //metodo para contar los digitos (tarea2)
+        int cont=0;    
+        if (n!=0){    //verifica que se haya ingresado un numero
+            do {        
+                n /= 10;    
+                cont++;   
+            } while (n > 0);
+            
+            System.out.println("El nimero de digitos es: " + cont);  //muestra numero de digitos
+        }else{
+            System.out.println("ingrese un numero");
+        }
     }
 }
